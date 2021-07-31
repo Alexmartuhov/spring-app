@@ -26,8 +26,10 @@ public class BusController {
         return new ResponseEntity<>(busService.getBus(id), HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete")
-    public ResponseEntity<BusDto> deleteBus (@PathVariable Integer id) {
-        return new ResponseEntity<>(busService.deleteBus(id), HttpStatus.OK);
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteBus (@PathVariable Integer id) {
+        busService.deleteBus(id);
+        return new ResponseEntity<>( HttpStatus.NO_CONTENT);
     }
 }
